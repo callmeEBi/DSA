@@ -83,9 +83,17 @@ class LinkedList:
             return True
         return False
 
+    def insert(self, index, value):
+        current_node = Node(value)
+        before_node = self.get(index - 1)
+        current_node.next = before_node.next
+        before_node.next = current_node
+
 
 my_linked_list = LinkedList(4)
+my_linked_list.append_end(3)
+my_linked_list.append_end(8)
 
-my_linked_list.set_value(0, 55)
+my_linked_list.insert(1, 7)
 
 my_linked_list.print_list()
