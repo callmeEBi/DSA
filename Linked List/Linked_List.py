@@ -77,10 +77,11 @@ class LinkedList:
         return result
 
     def set_value(self, index, value):
-        if index >= self.length or index < 0:
-            return
         temp_node = self.get(index)
-        temp_node.value = value
+        if temp_node:
+            temp_node.value = value
+            return True
+        return False
 
 
 my_linked_list = LinkedList(4)
