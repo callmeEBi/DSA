@@ -79,7 +79,8 @@ class DoublyLinkedList:
         return first_node
 
     def get(self, index):
-        if index >= self.length or index <= 0:
+        if index >= self.length or index < 0:
+            print("here")
             return
         if index <= self.length / 2:
             temp = self.head
@@ -132,15 +133,44 @@ class DoublyLinkedList:
         return current_node
 
 
+
 my_dll = DoublyLinkedList(27)
-my_dll.append(46)
-my_dll.append(70)
-my_dll.append(77)
-my_dll.append(15)
-my_dll.append(3)
+print("Initial List:")
+my_dll.print_list()
 
+print("\nAppend 28:")
+my_dll.append(28)
+my_dll.print_list()
 
-# FIXME - always in a new method:
-# consider length
-# consider situation with one item in the list
-# consider situation with empty list
+print("\nPrepend 26:")
+my_dll.prepend(26)
+my_dll.print_list()
+
+print("\nPop:")
+popped_node = my_dll.pop()
+print("Popped Node:", popped_node.value)
+my_dll.print_list()
+
+print("\nShift:")
+shifted_node = my_dll.shift()
+print("Shifted Node:", shifted_node.value)
+my_dll.print_list()
+
+print("my print:")
+my_dll.print_list()
+print("\nGet 0:")
+node = my_dll.get(0)
+print("Node at Index 0:", node.value)
+
+print("\nSet Value at Index 1 to 29:")
+my_dll.set_value(1, 29)
+my_dll.print_list()
+
+print("\nInsert 30 at Index 1:")
+my_dll.insert(1, 30)
+my_dll.print_list()
+
+print("\nRemove Node at Index 1:")
+removed_node = my_dll.remove(1)
+print("Removed Node:", removed_node.value)
+my_dll.print_list()
