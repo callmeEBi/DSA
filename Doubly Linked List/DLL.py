@@ -81,21 +81,24 @@ class DoublyLinkedList:
         self.length -= 1
         return first_node
 
+    def get(self, index):
+        if index >= self.length or index <= 0:
+            return
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+        return temp.value
+
 
 my_dll = DoublyLinkedList(27)
 my_dll.append(46)
 my_dll.append(70)
 my_dll.append(77)
 
-my_dll.shift()
-my_dll.shift()
-my_dll.shift()
-my_dll.shift()
-
-my_dll.print_list()
+print(my_dll.get(2))
 
 
-# FIXME - always do this in new method:
+# FIXME - always in a new method:
 # consider length
 # consider situation with one item in the list
 # consider situation with empty list
