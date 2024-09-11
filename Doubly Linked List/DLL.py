@@ -102,6 +102,11 @@ class DoublyLinkedList:
         return True
 
     def insert(self, index, value):
+
+        if index > self.length or index < 0:
+            return False
+        if index == 0:
+            return self.prepend(value)
         new_node = Node(value)
         after = self.get(index)
         before = after.prev
@@ -118,7 +123,7 @@ my_dll.append(77)
 my_dll.append(15)
 my_dll.append(3)
 
-my_dll.insert(2, 888)
+my_dll.insert(0, 888)
 
 my_dll.print_list()
 
