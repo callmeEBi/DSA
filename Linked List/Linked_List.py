@@ -97,24 +97,18 @@ class LinkedList:
             return True
 
     def remove(self, index):
-        current_node = self.get(index)
-        if current_node:
-            self.length -= 1
-            if not self.length:
-                self.head = None
-                self.tail = None
-            elif index == 0:
-                after_node = self.get(index + 1)
-                self.head = after_node
-            else:
-                after_node = self.get(index + 1)
-                before_node = self.get(index - 1)
-                before_node.next = after_node
-            current_node.next = None
-            current_node.value = None
-            return True
-        else:
+        if index >= self.length or index < 0:
             return None
+        if index == 0:
+            return self.shift()
+        if index == self.length - 1:
+            return self.pop()
+        self.length -= 1
+        before_node = self.get(index - 1)
+        current_node = before_node.next
+        before_node.next = current_node.next
+        current_node.next = None
+        return current_node
 
 
 my_linked_list = LinkedList(4)
@@ -122,6 +116,10 @@ my_linked_list.append_end(8)
 my_linked_list.append_end(29)
 my_linked_list.append_end(22)
 my_linked_list.append_end(50)
+my_linked_list.remove(0)
+my_linked_list.remove(0)
+my_linked_list.remove(2)
+my_linked_list.remove(1)
 my_linked_list.remove(0)
 
 my_linked_list.print_list()
