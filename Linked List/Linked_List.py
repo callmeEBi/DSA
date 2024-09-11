@@ -108,18 +108,22 @@ class LinkedList:
         current_node = before_node.next
         before_node.next = current_node.next
         current_node.next = None
-        return current_node
+        return
+
+    def reverse(self):
+        last_item = self.get(self.length - 1)
+        new_list = LinkedList(last_item)
+        for i in range(self.length - 1, -1, -1):
+            new_list.append_end(self.get(i).value)
+        new_list.shift()
+        return new_list
 
 
-my_linked_list = LinkedList(4)
-my_linked_list.append_end(8)
-my_linked_list.append_end(29)
-my_linked_list.append_end(22)
-my_linked_list.append_end(50)
-my_linked_list.remove(0)
-my_linked_list.remove(0)
-my_linked_list.remove(2)
-my_linked_list.remove(1)
-my_linked_list.remove(0)
+my_linked_list = LinkedList(35)
+my_linked_list.append_end(15)
+my_linked_list.append_end(99)
+my_linked_list.append_end(9)
+my_linked_list.append_end(82)
 
-my_linked_list.print_list()
+my_new_linked_list = my_linked_list.reverse()
+my_new_linked_list.print_list()
