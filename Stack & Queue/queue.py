@@ -27,12 +27,30 @@ class Queue:
             self.last = new_node
         self.length += 1
 
+    def dequeue(self):
+        if self.length == 0:
+            return None
+        first_node = self.first
+        if self.length == 1:
+            self.last = None
+        self.first = self.first.next
+        first_node.next = None
+        self.length -= 1
+        return first_node
 
-my_queue = Queue(9)
-my_queue.enqueue(99)
-my_queue.print_queue()
 
-# FIXME - always in a new method:
-# consider length
-# consider situation with one item in the list
-# consider situation with empty list
+queue = Queue(1)
+queue.enqueue(2)
+queue.enqueue(3)
+print("Queue:", end=" ")
+queue.print_queue()
+print("\nDequeued:", queue.dequeue().value)
+print("Queue:", end=" ")
+queue.print_queue()
+print("\nDequeued:", queue.dequeue().value)
+print("Queue:", end=" ")
+queue.print_queue()
+print("\nDequeued:", queue.dequeue().value)
+print("Queue:", end=" ")
+queue.print_queue()
+print("\nDequeued:", queue.dequeue())
