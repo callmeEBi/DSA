@@ -32,13 +32,12 @@ class Stack:
         return last_node
 
 
-my_stack = Stack(9)
-my_stack.pop()
-my_stack.push(88)
+my_stack = Stack(10)
+my_stack.push(20)
+my_stack.push(30)
 my_stack.print_stack()
-
-
-# FIXME - always in a new method:
-# consider height
-# consider situation with one item in the list
-# consider situation with empty list
+print("Height:", my_stack.height)
+popped_node = my_stack.pop()
+print("Popped:", popped_node.value)
+my_stack.print_stack()
+print("Height:", my_stack.height)
