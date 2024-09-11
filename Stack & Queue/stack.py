@@ -29,6 +29,8 @@ class Stack:
         self.top = self.top.next
         last_node.next = None
         self.height -= 1
+        if self.height == 0:
+            self.top = None
         return last_node
 
 
