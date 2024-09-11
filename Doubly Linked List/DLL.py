@@ -36,17 +36,14 @@ class DoublyLinkedList:
         return True
 
     def pop(self):
-
         if not self.length:
             return None
         last_node = self.tail
-
         if self.length == 1:
             self.head = None
             self.tail = None
             last_node.prev = None
             last_node.next = None
-
         else:
             self.tail = self.tail.prev
             last_node.prev = None
@@ -102,18 +99,37 @@ class DoublyLinkedList:
         return True
 
     def insert(self, index, value):
-
         if index > self.length or index < 0:
             return False
         if index == 0:
             return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
         new_node = Node(value)
         after = self.get(index)
         before = after.prev
         after.prev = new_node
         new_node.next = after
-        new_node.before = before
+        new_node.prev = before
         before.next = new_node
+        self.length += 1
+
+    def remove(self, index):
+        if index >= self.length or index < 0:
+            return None
+        if index == 0:
+            return self.shift()
+        if index == self.length - 1:
+            return self.pop()
+        current_node = self.get(index)
+        before = current_node.prev
+        after = current_node.next
+        before.next = after
+        after.prev = before
+        current_node.next = None
+        current_node.prev = None
+        self.length -= 1
+        return current_node
 
 
 my_dll = DoublyLinkedList(27)
@@ -123,9 +139,6 @@ my_dll.append(77)
 my_dll.append(15)
 my_dll.append(3)
 
-my_dll.insert(0, 888)
-
-my_dll.print_list()
 
 # FIXME - always in a new method:
 # consider length
