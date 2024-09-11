@@ -101,6 +101,15 @@ class DoublyLinkedList:
             temp.value = value
         return True
 
+    def insert(self, index, value):
+        new_node = Node(value)
+        after = self.get(index)
+        before = after.prev
+        after.prev = new_node
+        new_node.next = after
+        new_node.before = before
+        before.next = new_node
+
 
 my_dll = DoublyLinkedList(27)
 my_dll.append(46)
@@ -109,7 +118,8 @@ my_dll.append(77)
 my_dll.append(15)
 my_dll.append(3)
 
-my_dll.set_value(-1, 80)
+my_dll.insert(2, 888)
+
 my_dll.print_list()
 
 # FIXME - always in a new method:
