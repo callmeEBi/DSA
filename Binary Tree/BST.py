@@ -36,23 +36,19 @@ class BinarySearchTree:
         while comparing:
             if value == comparing.value:
                 return True
-            if value > comparing.value:
+            elif value > comparing.value:
                 comparing = comparing.right
             else:
                 comparing = comparing.left
         return False
 
 
-my_bst = BinarySearchTree()
-my_bst.insert(67)
-my_bst.insert(97)
-my_bst.insert(11)
-my_bst.insert(17)
-my_bst.insert(63)
-my_bst.insert(75)
-my_bst.insert(67)
-my_bst.insert(30)
-my_bst.insert(22)
-my_bst.insert(15)
-
-print(my_bst.contains(888))
+bst = BinarySearchTree()
+print(bst.insert(10))  # True
+print(bst.insert(5))  # True
+print(bst.insert(15))  # True
+print(bst.insert(10))  # False
+print(bst.contains(10))  # True
+print(bst.contains(5))  # True
+print(bst.contains(15))  # True
+print(bst.contains(20))  # False
