@@ -27,10 +27,19 @@ class HashTable:
                     return i[1]
         return None
 
+    def keys(self):
+        all_keys = []
+        for i in self.data_map:
+            if i:
+                for j in i:
+                    if j:
+                        all_keys.append(j[0])
+        return all_keys
+
 
 my_table = HashTable()
 my_table.set_item("bolts", 1400)
 my_table.set_item("washers", 50)
 my_table.set_item("lumber", 70)
 
-print(my_table.get_item("washers"))
+print(my_table.keys())
