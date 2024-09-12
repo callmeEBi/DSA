@@ -1,4 +1,5 @@
 class Node:
+
     def __init__(self, value) -> None:
         self.value = value
         self.right = None
@@ -6,30 +7,40 @@ class Node:
 
 
 class BinarySearchTree:
+
     def __init__(self) -> None:
         self.root = None
 
     def insert(self, value):
         new_node = Node(value)
+
         if not self.root:
             self.root = new_node
-            return
+            return True
         compared_node = self.root
+
         while True:
+
+            if value == compared_node.value:
+                return False
+
             if value > compared_node.value:
+
                 if compared_node.right:
                     compared_node = compared_node.right
+
                 else:
                     compared_node.right = new_node
-                    return
-            if value < compared_node.value:
+                    return True
+
+            else:
+
                 if compared_node.left:
                     compared_node = compared_node.left
+
                 else:
                     compared_node.left = new_node
-                    return
-            if value == compared_node.value:
-                return
+                    return True
 
 
 my_bst = BinarySearchTree()
