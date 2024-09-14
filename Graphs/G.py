@@ -34,3 +34,16 @@ class Graph:
         for i in self.adj_list[vertex]:
             self.adj_list[i].remove(vertex)
         self.adj_list.pop(vertex)
+
+
+my_graph = Graph()
+my_graph.add_vertex("A", "B", "C", "D")
+my_graph.add_edge("A", "B")
+my_graph.add_edge("B", "C")
+my_graph.add_edge("C", "D")
+my_graph.add_edge("D", "A")
+my_graph.print_graph()
+my_graph.remove_edge("A", "B")
+my_graph.print_graph()
+my_graph.remove_vertex("C")
+my_graph.print_graph()
