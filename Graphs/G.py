@@ -28,12 +28,9 @@ class Graph:
                 pass
             return True
 
-
-my_graph = Graph()
-my_graph.add_vertex("a", "b", "c", "d")
-my_graph.add_edge("a", "b")
-my_graph.add_edge("a", "c")
-my_graph.add_edge("a", "d")
-my_graph.add_edge("b", "d")
-my_graph.add_edge("c", "d")
-my_graph.print_graph()
+    def remove_vertex(self, vertex):
+        if not vertex in self.adj_list:
+            return False
+        for i in self.adj_list[vertex]:
+            self.adj_list[i].remove(vertex)
+        self.adj_list.pop(vertex)
