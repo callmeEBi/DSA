@@ -42,13 +42,29 @@ class BinarySearchTree:
                 comparing = comparing.left
         return False
 
+    def __r_contains(self, current_node, value):
+        if not current_node:
+            return False
+        if value == current_node.value:
+            return True
+        if value < current_node.value:
+            return self.__r_contains(current_node.left, value)
+        if value > current_node.value:
+            return self.__r_contains(current_node.right, value)
+
+    def r_contains(self, value):
+        return self.__r_contains(self.root, value)
+
 
 bst = BinarySearchTree()
-print(bst.insert(10))  # True
-print(bst.insert(5))  # True
-print(bst.insert(15))  # True
-print(bst.insert(10))  # False
-print(bst.contains(10))  # True
-print(bst.contains(5))  # True
-print(bst.contains(15))  # True
-print(bst.contains(20))  # False
+bst.insert(10)
+bst.insert(5)
+
+print(bst.r_contains(5))
+
+# print(bst.insert(15))  # True
+# print(bst.insert(10))  # False
+# print(bst.contains(10))  # True
+# print(bst.contains(5))  # True
+# print(bst.contains(15))  # True
+# print(bst.contains(20))  # False
