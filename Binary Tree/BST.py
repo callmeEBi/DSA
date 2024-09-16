@@ -84,10 +84,16 @@ class BinarySearchTree:
         else:
             if not current_node.right and not current_node.left:
                 return None
-            if not current_node.right:
+            elif not current_node.right:
                 current_node = current_node.left
             elif not current_node.left:
                 current_node = current_node.right
+            else:
+                sub_tree_min = self.min_value(current_node.right)
+                current_node.value = sub_tree_min
+                current_node.right = self.__delete_node(
+                    current_node.right, sub_tree_min
+                )
         return current_node
 
     def delete_node(self, value):
@@ -95,10 +101,14 @@ class BinarySearchTree:
 
 
 bst = BinarySearchTree()
-bst.r_insert(2)
-bst.r_insert(1)
+bst.r_insert(8)
 bst.r_insert(3)
-# print(bst.root.value)
-# print(bst.root.left.value)
-# print(bst.root.right.value)
-print(bst.min_value(bst.root.left))
+bst.r_insert(10)
+bst.r_insert(1)
+bst.r_insert(6)
+bst.r_insert(14)
+bst.r_insert(4)
+bst.r_insert(7)
+bst.r_insert(13)
+bst.delete_node(6)
+print(bst.root.left.right.value)
