@@ -69,6 +69,11 @@ class BinarySearchTree:
             self.root = Node(value)
         self.__r_insert(self.root, value)
 
+    def min_value(self, current_node):
+        while current_node.left:
+            current_node = current_node.left
+        return current_node.value
+
     def __delete_node(self, current_node, value):
         if not current_node:
             return None
@@ -93,6 +98,7 @@ bst = BinarySearchTree()
 bst.r_insert(2)
 bst.r_insert(1)
 bst.r_insert(3)
-print(bst.root.value)
-print(bst.root.left.value)
-print(bst.root.right.value)
+# print(bst.root.value)
+# print(bst.root.left.value)
+# print(bst.root.right.value)
+print(bst.min_value(bst.root.left))
