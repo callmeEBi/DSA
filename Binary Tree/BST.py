@@ -69,6 +69,25 @@ class BinarySearchTree:
             self.root = Node(value)
         self.__r_insert(self.root, value)
 
+    def __delete_node(self, current_node, value):
+        if not current_node:
+            return None
+        if value > current_node.value:
+            current_node.right = self.__delete_node(current_node.right, value)
+        elif value < current_node.value:
+            current_node.left = self.__delete_node(current_node.left, value)
+        else:
+            if not current_node.right and not current_node.left:
+                return None
+            if not current_node.right:
+                current_node = current_node.left
+            elif not current_node.left:
+                current_node = current_node.right
+        return current_node
+
+    def delete_node(self, value):
+        self.__delete_node(self.root, value)
+
 
 bst = BinarySearchTree()
 bst.r_insert(2)
