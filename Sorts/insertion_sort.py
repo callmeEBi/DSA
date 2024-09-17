@@ -3,7 +3,7 @@ def insertion_sort(items_list):
         for j in range(i):
             if items_list[i] < items_list[j]:
                 items_list[i], items_list[j] = items_list[j], items_list[i]
+    return items_list
 
-my_list = [4, 2, 6, 5, 1, 3]
-insertion_sort(my_list)
-print(my_list)
+
+print(insertion_sort([4, 2, 6, 5, 1, 3]))
