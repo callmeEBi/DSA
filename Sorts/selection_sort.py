@@ -4,7 +4,9 @@ def selection_sort(items_list):
         for j in range(i + 1, len(items_list)):
             if items_list[j] < items_list[min_index]:
                 min_index = j
-        items_list[i], items_list[min_index] = items_list[min_index], items_list[i]
+        if i != min_index:
+            items_list[i], items_list[min_index] = items_list[min_index], items_list[i]
+
     return items_list
 
 
