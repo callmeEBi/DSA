@@ -104,7 +104,6 @@ class BinarySearchTree:
         queue = []
         results = []
         queue.append(self.root)
-        i = 0
         while len(queue) > 0:
             current_node = queue.pop(0)
             results.append(current_node.value)
