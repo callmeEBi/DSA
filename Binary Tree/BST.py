@@ -99,6 +99,21 @@ class BinarySearchTree:
     def delete_node(self, value):
         self.__delete_node(self.root, value)
 
+    # breadth first search
+    def BFS(self):
+        queue = []
+        results = []
+        queue.append(self.root)
+        i = 0
+        while len(queue) > 0:
+            current_node = queue.pop(0)
+            results.append(current_node.value)
+            if current_node.left:
+                queue.append(current_node.left)
+            if current_node.right:
+                queue.append(current_node.right)
+        return results
+
 
 bst = BinarySearchTree()
 bst.r_insert(8)
