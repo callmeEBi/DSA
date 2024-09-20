@@ -113,16 +113,29 @@ class BinarySearchTree:
                 queue.append(current_node.right)
         return results
 
+    # depth-first pre-order traversal
+    def dfs_pre_order(self):
+        if not self.root:
+            return None
+        results = []
+
+        def traverse(current_node):
+            results.append(current_node.value)
+            if current_node.left:
+                traverse(current_node.left)
+            if current_node.right:
+                traverse(current_node.right)
+
+        traverse(self.root)
+        return results
+
 
 bst = BinarySearchTree()
-bst.r_insert(8)
-bst.r_insert(3)
-bst.r_insert(10)
-bst.r_insert(1)
-bst.r_insert(6)
-bst.r_insert(14)
-bst.r_insert(4)
-bst.r_insert(7)
-bst.r_insert(13)
-bst.delete_node(6)
-print(bst.root.left.right.value)
+bst.insert(47)
+bst.insert(21)
+bst.insert(76)
+bst.insert(18)
+bst.insert(27)
+bst.insert(52)
+bst.insert(82)
+print(bst.dfs_pre_order())
